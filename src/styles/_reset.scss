@@ -1,0 +1,274 @@
+//@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;500;900&family=Noto+Sans+Mono:wght@100;300;500;700;900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+//@font-face {
+//    font-family: 'Noto Sans KR';
+//    font-weight: 300;
+//}
+//
+//@font-face {
+//    font-family: 'Roboto';
+//    font-weight: 400;
+//    unicode-range: U+0041-005A, U+0061-007A;
+//}
+@font-face {
+    font-family: 'SeoulNamsanM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F;
+}
+
+@mixin mobile {
+    @media (max-width: 600px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 0px) and (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin device_mobile {
+    @media (min-width: 0px) and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin device_tablet {
+    @media (min-width: 1024px) and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin tablet_pc {
+    @media (min-width: 1280px) and (max-width: 1480px) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media (min-width: 1281px) and (max-width: 1640px) {
+        @content;
+    }
+}
+
+body {
+    position: relative;
+    font-family: 'SeoulNamsanM', 'DM Sans', sans-serif !important;
+    -webkit-text-size-adjust: 100%;
+}
+
+.App {
+    max-height: 100vh;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-color);
+    }
+}
+
+body,
+div,
+ul,
+li,
+ol,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+textarea,
+p,
+select,
+button,
+figure {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    color: #1a0dab;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, .10);
+}
+
+a:visited {
+    color: #609;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+cite, cite a:link, cite a:visited {
+    color: #202124;
+    font-style: normal;
+}
+
+button {
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    line-height: 36px;
+    margin: 0;
+    padding: 0 16px;
+    border: 0;
+    outline: none;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 #0003, 0 0 #00000024, 0 0 #0000001f;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    user-select: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button > svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(calc(-50% + 0.5px), calc(-50% + 0.5px));
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    font: inherit;
+    -webkit-transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--text-color);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active {
+    -webkit-text-fill-color: var(--text-color);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+img,
+fieldset {
+    border: 0;
+}
+
+video,
+img {
+    width: 100%;
+}
+
+ol, li, ul {
+    list-style: none;
+}
+
+em {
+    font-weight: bold;
+    font-style: normal;
+}
+.m-15 {
+    margin: 15px !important;
+}
+
+.mt-15 {
+    margin-top: 15px ;
+}
+
+.mt-8 {
+    margin-top: 8px;
+}
+
+.mt-30 {
+    margin-top: 30px !important;
+}
+
+.mr-8 {
+    margin-right: 8px !important;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: 10px;
+}
+
+@include mobile() {
+    .App::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0);
+        border-radius: 0px;
+    }
+    .form_select_box::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+.holi_thmb {
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.canvas_close {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #636e84;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.05), 0 0 2px 0 rgba(0, 0, 0, 0.07);
+    cursor: pointer;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.cat_wrap {
+    z-index: 99999999999999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    cursor: url('https://stylekorean-image.s3.ap-northeast-2.amazonaws.com/oms/zzz.png') 12 12, auto;
+}

@@ -1,0 +1,106 @@
+.apexcharts-legend-text {
+    color: var(--nav-text-color) !important;
+}
+
+.apexcharts-tooltip {
+    background-color: #000000a8 !important;
+    border: 0 !important;
+
+    .apexcharts-tooltip-title {
+        background-color: #000000a8 !important;
+    }
+}
+
+.apexcharts-tooltip-title,
+.apexcharts-tooltip-series-group {
+    background-color: #35353545 !important;
+    color: #ffffff;
+    border-color: transparent !important;
+}
+
+.apexcharts-xaxistooltip-bottom {
+    background-color: #000000 !important;
+    color: #fff !important;
+    border: 0 !important;
+
+    &:before,
+    &:after {
+        border-bottom-color: #000000 !important;
+    }
+}
+
+.chart_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -16px;
+}
+
+.test_chart {
+    width: calc(50% - 32px);
+    margin: 16px;
+}
+
+.apex_chart {
+    &.card {
+        height: 404px;
+        margin: 15px 0;
+    }
+    &.monthly {
+        height: auto;
+    }
+}
+.monthly_seller_page {
+    .apex_chart {
+        margin: 30px 15px;
+    }
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-pan-icon,
+.apexcharts-reset-icon {
+    display: none;
+}
+
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon,
+.apexcharts-menu-icon {
+    svg {
+        fill: var(--member-title-sub-color) !important;
+    }
+
+    &:hover {
+        svg {
+            fill: var(--nav-text-color) !important;
+        }
+    }
+}
+
+.apexcharts-toolbar {
+    .apexcharts-menu {
+        padding: 0;
+        border: 0;
+        background-color: var(--background-color);
+
+        .apexcharts-menu-item {
+            color: var(--text-color);
+            background-color: var(--background-color);
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.04);
+                transition: all 0.08s cubic-bezier(0.39, 0.575, 0.565, 1);
+            }
+        }
+    }
+}
+
+.monthly_seller_page {
+    .card_title_area {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .select_criteria {
+            width: 25%;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+.test_components_128 {
+    margin-bottom: 30px;
+    color: var(--color-mode-color);
+    font-size: 20px;
+    text-align: center;
+
+    .test_box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px 0;
+
+        div {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+
+            &:first-child {
+                border-right: 1px solid var(--border-color);
+            }
+
+            &:nth-child(2) {
+                border-right: 1px solid var(--border-color);
+            }
+
+            span {
+                display: block;
+                padding: 6px 0;
+                width: 100%;
+                color: var(--nav-text-color);
+            }
+        }
+    }
+}
+
+.card {
+    padding: 30px;
+    background-color: var(--content-background-color);
+    border-radius: 20px;
+    box-shadow: 1px 0 20px #00000014 !important;
+}
+
+.card_title_area {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    .card_title {
+        color: var(--member-title-sub-color);
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+}

@@ -1,0 +1,73 @@
+:root[data-theme="dark"] {
+    --background-color: #303030;
+    --content-background-color: #424242;
+    --nav-text-color: #fff;
+    --member-title-sub-color: #adb0bb;
+    --border-color: rgba(151, 151, 151, 0.38);
+    --border-hover-color: #fff;
+    --text-color: rgba(255, 255, 255, 0.7019607843);
+    --icon-color: rgba(255, 255, 255, 0.7019607843) transparent transparent transparent;
+    --scrollbar-color: #616161;
+    --scrollbar-background-color: #19191938;
+    --table-border-color: #ffffff1f;
+    --header-background-color: #212121;
+    --header-icon-color: #949db2;
+    --checkbox-border-color: #ffffffb3;
+    --hover-table-color: #535353;
+    --hover-button-color: #494949;
+    --hover-logout-button-color: #rgba(251, 151, 120, 0.04);
+    --hover-select-background: rgba(255, 255, 255, .04);
+}
+
+// Light Mode
+:root[data-theme="light"] {
+    --background-color: #fafafa;
+    --content-background-color: #ffffff;
+    --nav-text-color: #000000de;
+    --member-title-sub-color: #777e89;
+    --border-color: #0000001f;
+    --border-hover-color: #000;
+    --text-color: #0009;
+    --icon-color: #000 transparent transparent transparent;
+    --scrollbar-color: #a5a5a5;
+    --scrollbar-background-color: #81818138;
+    --table-border-color: #5f5f5f1f;
+    --header-background-color: #fff;
+    --header-icon-color: #5a5f6b;
+    --checkbox-border-color: #0000008a;
+    --hover-table-color: #eaeaea;
+    --hover-button-color: #f5f5f5;
+    --hover-logout-button-color: #FAF6F5;
+    --hover-select-background: rgba(145, 145, 145, 0.12);
+}
+
+:root[data-theme-color="orange"] {
+    --color-mode-color: #fb9778;
+    --color-mode-sub-color: #03c9d7;
+    --color-mode-sub2-color: #06d79c;
+}
+:root[data-theme-color="blue"] {
+    --color-mode-color: #1856e6;
+    --color-mode-sub-color: #1a97f5;
+    --color-mode-sub2-color: #0ccaf2;
+}
+:root[data-theme-color="purple"] {
+    --color-mode-color: #6018e6;
+    --color-mode-sub-color: #7352ff;
+    --color-mode-sub2-color: #a20dfc;
+}
+:root[data-theme-color="red"] {
+    --color-mode-color: #fc4b6c;
+    --color-mode-sub-color: #ff5c8e;
+    --color-mode-sub2-color: #e639af;
+}
+:root[data-theme-color="navy"] {
+    --color-mode-color: #132e6e;
+    --color-mode-sub-color: #1e4db7;
+    --color-mode-sub2-color: #105285;
+}
+:root[data-theme-color="green"] {
+    --color-mode-color: #00c292;
+    --color-mode-sub-color: #00cec3;
+    --color-mode-sub2-color: #0bd2d9;
+}

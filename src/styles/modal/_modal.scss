@@ -1,0 +1,103 @@
+.modal_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn .3s forwards;
+
+    .modal {
+        min-width: 200px;
+        background: var(--content-background-color);
+        border-radius: 4px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 1001;
+        opacity: 0;
+        animation: fadeIn .5s forwards;
+        color: var(--nav-text-color);
+
+        .modal_title {
+            font: 500 24px/36px;
+            margin-bottom: 20px;
+        }
+        .modal_text {
+            color: var(--text-color);
+        }
+
+        .modal_button_area {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            .delete_button {
+                background-color: #d32f2f;
+                margin-right: 10px;
+                &:hover {
+                    background-color: #d32f2f;
+                }
+            }
+            .approve_button {
+                background-color: #03c9d7;
+                margin-right: 10px;
+                &:hover {
+                    background-color: #03c9d7;
+                }
+            }
+            button {
+                display: inline-block;
+                margin-top: 20px;
+                border: none;
+                border-radius: 4px;
+                color: #fff;
+                cursor: pointer;
+                font-size: 12px;
+                background-color: transparent;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.04);
+                }
+            }
+        }
+
+        &.api_request_modal {
+            min-width: 400px;
+            max-width: 460px;
+            padding: 20px 40px;
+
+            .main_title {
+                padding-bottom: 26px;
+
+            }
+
+            .modal_button_area {
+                margin-top: 16px;
+
+                button {
+                    width: 50%;
+                    margin-top: 0;
+                }
+                .close_button {
+                    color: var(--nav-text-color);
+                    background-color: var(--content-background-color);
+
+                    &:hover {
+                        color: var(--content-background-color);
+                        background-color: var(--nav-text-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

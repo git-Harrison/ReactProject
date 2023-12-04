@@ -1,0 +1,39 @@
+.down_list {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+
+    .down_list_item {
+        width: calc(25% - 15px);
+        min-width: 200px;
+        max-width: 240px;
+        background-color: #424242;
+        margin: 15px;
+        padding: 2em;
+        border-radius: 20px;
+        box-shadow: 1px 0 20px #00000014;
+
+        .download_row {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 36px;
+
+            img {
+                position: absolute;
+                left: 0;
+                top: -8px;
+                width: 50px;
+                height: 50px;
+            }
+
+            button {
+                width: 50%;
+            }
+        }
+
+        .form_select {
+            padding: 0.75em;
+        }
+    }
+}

@@ -1,0 +1,550 @@
+body {
+    height: 100vh;
+    background-color: var(--background-color);
+}
+
+.table_row_half {
+    display: flex;
+
+    .left_table_wrap,
+    .right_table_wrap {
+        width: 50%;
+
+        .table_title {
+            margin-top: 40px;
+            padding-left: 30px;
+            font-size: 28px;
+            color: var(--text-color);
+        }
+
+        .content_container {
+            min-width: auto;
+
+            .table_responsive {
+                overflow: auto;
+                max-height: 700px;
+
+                th:first-child {
+                    z-index: 10;
+                }
+
+                tfoot {
+                    tr {
+                        td {
+                            z-index: 8;
+                            position: sticky;
+                            left: 0;
+                            bottom: 0;
+
+                            &:first-child {
+                                z-index: 10;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.table_responsive {
+    overflow-X: auto;
+
+    &.daily_report {
+        overflow: visible;
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--scrollbar-background-color);
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-color);
+        border-radius: 8px;
+    }
+
+    .basic_table,
+    .dynamic_table,
+    .pagination_table,
+    .seller_table,
+    .member_table,
+    .monthly_amount_table {
+        width: 100%;
+        border-spacing: 0;
+        overflow: auto;
+        white-space: nowrap;
+
+        tbody {
+
+            .monthly_amount_table_more_view {
+            }
+
+            tr {
+                &:hover {
+                    td {
+                        background-color: var(--hover-table-color);
+                    }
+                }
+            }
+        }
+
+        tr {
+            border: 0;
+            border-collapse: collapse;
+
+            &:last-child {
+                td {
+                    border-bottom: 0;
+                }
+            }
+
+            td:first-child, th:first-child {
+                position: sticky;
+                left: 0;
+                border-right: 1px solid var(--table-border-color);
+                z-index: 2;
+            }
+
+            td.first {
+                max-width: 140px;
+                background-color: var(--content-background-color);
+            }
+
+            th {
+                position: sticky;
+                z-index: 1;
+                top: 0;
+
+                &:first-child {
+                    z-index: 2;
+                }
+
+                .sort_icon_box {
+                    float: right;
+                    width: fit-content;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    .sort_icon {
+                        height: 10.5px;
+                    }
+                    .active {
+                        color: var(--color-mode-color);
+                    }
+                }
+            }
+
+            th, td {
+                padding: 10px 16px;
+                text-align: center;
+                border-bottom: 1px solid var(--table-border-color);
+                background-color: var(--content-background-color);
+            }
+
+            td {
+                img {
+                    width: 33px;
+                    height: 33px;
+                }
+
+                .monthly_type_all {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    justify-content: center;
+                    align-items: center;
+
+                    .type_0, .seller_monthly_order {
+                        margin-bottom: 7px;
+                        color: #F2BE5C;
+                    }
+
+                    .type_1, .seller_monthly_payment {
+                        margin-bottom: 7px;
+                        color: #77C3F2;
+                    }
+
+                    .type_2, .seller_monthly_netIncome {
+                        color: #F2A2C8;
+                    }
+                }
+
+                &:last-child {
+                    letter-spacing: .3px;
+                }
+            }
+
+            .half_store {
+                border-right: 1px solid var(--table-border-color);
+            }
+
+            .half_td {
+                padding: 0;
+
+                &.fb {
+                    border-right: 1px solid var(--table-border-color);
+                }
+
+                .half_data {
+                    border-bottom: 1px solid var(--table-border-color);
+                    padding: 10px 16px;
+
+                    &:last-child {
+                        border: 0;
+                    }
+                }
+            }
+
+            thead {
+                position: sticky;
+            }
+        }
+
+        tfoot {
+            tr {
+                td {
+                    border-top: 1px solid var(--table-border-color);
+                    padding: 15.5px 16px;
+                }
+            }
+        }
+
+        &:last-child {
+            border-bottom: 1px solid #ffffff1f;
+        }
+    }
+}
+
+.pagination_btn_wrap, .member_btn_wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 8px;
+
+    .pagination_btn, .member_btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        font-size: 26px;
+        background-color: transparent;
+        color: var(--nav-text-color);
+
+        &:disabled {
+            color: var(--table-border-color);
+        }
+    }
+
+    .page_info {
+        margin: 0 32px 0 24px;
+        font-size: 12px;
+        color: var(--checkbox-border-color);
+    }
+
+    .basic_select {
+        width: auto;
+        border: 0;
+        padding: 0.5em 0.9em 0.5em 0;
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.7019607843);
+        border-radius: 0;
+        font-size: 12px;
+    }
+
+    .form_select {
+        display: inline-block;
+        width: 50px;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        padding: 0.2em 0.2em 0.2em 0.5em;
+        font-size: 14px;
+
+        .select_item {
+            padding: 0.2em 0.2em 0.2em 0.5em;
+            font-size: 12px;
+        }
+    }
+}
+
+.monthly_amount_store_table {
+    td:nth-child(2), th:nth-child(2) {
+        position: sticky;
+        left: 97.5px;
+        border-right: 1px solid var(--table-border-color);
+        z-index: 2 !important;
+    }
+}
+.monthly_amount_Store {
+    position: sticky;
+    left: 97.5px;
+    border-right: 1px solid var(--table-border-color);
+    z-index: 2 !important;
+}
+.monthly_seller_store_table {
+    td:nth-child(2), th:nth-child(2) {
+        position: sticky;
+        left: 77px;
+        border-right: 1px solid var(--table-border-color);
+        z-index: 2 !important;
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.2em;
+
+    .pagination_index {
+        margin: 0 2.8em;
+    }
+
+    button {
+        margin: 0 2px;
+        padding: 0 14px;
+        color: var(--text-color);
+        background-color: transparent;
+        transition: background-color .2s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        &:hover {
+            background-color: var(--hover-table-color);
+            transition: background-color .2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        &.paginationActiveBtn {
+            color: var(--color-mode-color);
+            background-color: var(--hover-table-color);
+        }
+    }
+}
+
+.pagination_table_wrap {
+
+    .pagination_table {
+
+        th:first-child {
+            z-index: 9 !important;
+        }
+
+        th, td {
+            text-align: left !important;
+        }
+    }
+}
+
+.seller_table_wrap {
+    .seller_table {
+        .seller_table_monthly {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .seller_monthly_cell {
+                margin: 3.5px 0;
+                color: #F2BE5C;
+
+                [class$=ratio] {
+                    margin-left: 5px;
+                    color: #F2BE5C;
+                }
+
+                [class^=seller_monthly_payment] {
+                    color: #77C3F2;
+                }
+
+                [class^=seller_monthly_netIncome] {
+                    color: #F2A2C8;
+                }
+            }
+        }
+    }
+}
+
+.color_ex {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 16px;
+
+    .ex_item {
+        position: relative;
+        margin-right: 20px;
+        padding: 0 20px;
+        border-right: 1px solid var(--table-border-color);
+
+        &:last-child {
+            padding-right: 0;
+            margin-right: 0;
+            border-right: 0;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 4px;
+        }
+    }
+
+    .ex_orders {
+        &:before {
+            background-color: #F2BE5C;
+        }
+    }
+
+    .ex_payment {
+        &:before {
+            background-color: #77C3F2;
+        }
+    }
+
+    .ex_netIncome {
+        &:before {
+            background-color: #F2A2C8;
+        }
+    }
+}
+
+.shopify_excel_upload_table {
+    width: 100%;
+    border-bottom: 1px solid var(--table-border-color);
+    font-size: 15px;
+
+    th {
+        margin: 0;
+        padding: 12px 0;
+        text-align: center;
+        border-bottom: 1px solid var(--table-border-color);
+        border-right: 1px solid var(--table-border-color);
+
+        &:last-child {
+            border-right: 0;
+        }
+    }
+
+    td {
+        padding: 8px;
+        max-width: 350px;
+        word-break: break-word;
+        text-align: center;
+        border-bottom: 1px solid var(--table-border-color);
+        border-right: 1px solid var(--table-border-color);
+
+        &:last-child {
+            border-right: 0;
+        }
+
+        &:nth-child(2) {
+            max-width: 300px;
+            font-size: 12px;
+        }
+
+        &:nth-child(5) {
+            max-width: 300px;
+        }
+    }
+
+    tr:last-child {
+        td {
+            border-bottom: 0;
+        }
+    }
+
+    tr.highlighted_row {
+        background-color: rgb(231 141 141 / 33%);
+    }
+
+    tr.another_class {
+        background-color: #ffffff14;
+    }
+}
+
+.daily_report_table {
+    th {
+        &:nth-child(2) {
+            border-right: 1px solid var(--table-border-color);
+        }
+
+        &.store_sell {
+            border-right: 1px solid var(--table-border-color);
+        }
+
+        .th_wrap {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .sort_icon_box {
+            position: absolute;
+            float: none;
+            right: 11%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: fit-content;
+            display: flex;
+            flex-flow: column nowrap;
+
+            .sort_icon {
+                height: 14px !important;
+                margin: -2px 0;
+            }
+            .active {
+                color: var(--color-mode-color);
+            }
+        }
+
+        &.store_sell {
+            border-right: 1px solid var(--table-border-color);
+        }
+    }
+
+    td {
+        position: relative;
+
+        &:first-child {
+            width: 130px;
+        }
+
+        &:nth-child(2) {
+            width: 40px;
+            border-right: 1px solid var(--table-border-color);
+        }
+
+        &.store_sell {
+            border-right: 1px solid var(--table-border-color);
+        }
+    }
+
+    tfoot {
+        &:hover {
+            td {
+                background-color: var(--hover-table-color);
+            }
+        }
+    }
+}
+
+.currencies_popover {
+    z-index: 999999;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(calc(-50% + 0.5px), calc(-50% + 0.5px));
+    line-height: 26px;
+    padding: 12px 20px;
+    text-align: left;
+    border-radius: 8px;
+    border: 1px solid var(--table-border-color);
+    background-color: var(--hover-table-color);
+}

@@ -1,0 +1,156 @@
+.form_text_input {
+    width: -webkit-fill-available;
+    padding: 1.4em 0.75em 0.75em 0.75em;
+    border: 1px solid rgba(151, 151, 151, 0.38);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--nav-text-color);
+    outline: none;
+    background: none;
+
+    &::placeholder {
+        opacity: 0;
+        transition: opacity .08s cubic-bezier(.39, .575, .565, 1);
+        font-weight: 500;
+        color: rgba(151, 151, 151, 0.38);
+    }
+
+    &:hover {
+        border-color: var(--border-hover-color);
+        transition: all .08s cubic-bezier(.39, .575, .565, 1);
+    }
+
+    &:focus {
+        border-color: var(--color-mode-color);
+        transition: all .08s cubic-bezier(.39, .575, .565, 1);
+
+        &::placeholder {
+            opacity: 1;
+            transition: opacity .14s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-delay: .18s;
+        }
+    }
+}
+
+.form_text_label {
+    position: absolute;
+    left: 0.8rem;
+    top: 1.15rem;
+    padding: 0 0.5rem 0 0;
+    color: rgba(151, 151, 151, 0.38);
+    cursor: text;
+    transition: top .4s cubic-bezier(0.25, 0.8, 0.25, 1), font-size .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: var(--content-background-color);
+    font-weight: 700;
+}
+
+.form {
+    position: relative;
+    margin: 0.25em 0;
+    padding-bottom: 1.34375em;
+    text-align: center;
+
+    &.re_request {
+        position: relative;
+        margin: 0;
+        margin-top: 8px;
+
+        input {
+            padding: 1.4em 6em 0.75em 0.75em;
+        }
+    }
+}
+
+.form_text_input:focus ~ .form_text_label,
+.form_text_input:not(:placeholder-shown).form_text_input:not(:focus) ~ .form_text_label {
+    top: -0.5rem;
+    font-size: 0.8rem;
+    transition: top .4s cubic-bezier(0.25, 0.8, 0.25, 1), font-size .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.form_text_input:focus ~ .form_text_label {
+    color: var(--color-mode-color);
+}
+
+.search_form {
+    position: relative;
+    width: 368px;
+
+    &.member {
+        .form_search_label {
+            top: 6px;
+        }
+    }
+
+    .search_input {
+        width: 100%;
+        padding: 4px 0;
+        border: 0;
+        border-bottom: 1px solid rgba(151, 151, 151, 0.38);
+        font-family: inherit;
+        font-size: 15px;
+        color: var(--nav-text-color);
+        outline: none;
+        background: none;
+
+        &.member {
+            padding: 8px 0;
+        }
+
+        &::placeholder {
+            opacity: 0;
+            transition: opacity .08s cubic-bezier(.39, .575, .565, 1);
+            font-weight: 600;
+        }
+
+        &:hover {
+            border-color: var(--border-hover-color);
+            transition: all .08s cubic-bezier(.39, .575, .565, 1);
+        }
+
+        &:focus {
+            border-color: var(--color-mode-color);
+            transition: all .08s cubic-bezier(.39, .575, .565, 1);
+
+            &::placeholder {
+                opacity: 1;
+                transition: opacity .14s cubic-bezier(0.25, 0.8, 0.25, 1);
+                transition-delay: .18s;
+            }
+        }
+
+        &:focus ~ .form_search_label,
+        &:not(:placeholder-shown).search_input:not(:focus) ~ .form_search_label {
+
+            top: -1rem;
+            font-size: 12px;
+            transition: top .4s cubic-bezier(0.25, 0.8, 0.25, 1), font-size .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        &:focus ~ .form_search_label {
+            color: var(--color-mode-color);
+        }
+    }
+
+    .form_search_label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 0 0.5rem 0 0;
+        color: var(--checkbox-border-color);
+        cursor: text;
+        transition: top .4s cubic-bezier(0.25, 0.8, 0.25, 1), font-size .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        background-color: var(--content-background-color);
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+.sign_input_check_msg {
+    width: 100%;
+    margin-top: -1.34375em;
+    color: var(--color-mode-color);
+    font-size: 12px;
+}
+

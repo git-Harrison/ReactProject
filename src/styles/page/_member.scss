@@ -1,0 +1,500 @@
+.sign {
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+
+    .member_bg_box {
+        position: relative;
+        flex: 1 1 50%;
+        box-sizing: border-box;
+        max-width: 50%;
+    }
+
+    .left_bg {
+        background-color: var(--background-color);
+
+        .logo {
+            z-index: 9;
+            position: absolute;
+            top: 0;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+
+            a {
+                display: flex;
+                align-items: center;
+            }
+
+            .logo_img {
+                display: inline-block;
+                max-width: 32px;
+                height: 32px;
+            }
+
+            .logo_text {
+                color: var(--nav-text-color);
+                font-size: 24px;
+                font-family: "Pacifico", cursive;
+            }
+        }
+
+        .bg {
+            z-index: 1;
+            position: absolute;
+            right: -50px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+    }
+
+    .right_bg {
+        background-color: var(--content-background-color);
+    }
+}
+
+.sign_title {
+    .sign_title_text {
+        font-weight: 600;
+        margin-bottom: 6px;
+        font-size: 1.5em;
+        color: var(--nav-text-color);
+    }
+
+    .sign_text {
+        display: block;
+        margin-bottom: 16px;
+        color: var(--member-title-sub-color);
+    }
+}
+
+.form_text_wrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.form_text_row {
+    flex: 1 1 50%;
+    box-sizing: border-box;
+    max-width: 50%;
+    padding: 30px;
+}
+
+.sign_up_form {
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.forgot_form {
+
+    .select_birthday_form {
+        padding-bottom: 1.34375em;
+        margin-bottom: 0.25em;
+        width: 100%;
+
+        .react-datepicker__input-container {
+            max-width: 100%;
+        }
+
+        .react-datepicker__input-container input {
+            margin: 0;
+        }
+
+        .year-selection {
+            overflow-y: scroll;
+        }
+    }
+}
+
+.email_form {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    .form {
+        width: 40%;
+    }
+
+    .domain_icon {
+        color: var(--text-color);
+        font-size: 20px;
+        margin: 0 5px;
+        line-height: 3em;
+
+    }
+
+    .domain_select_box {
+        margin: 0.25em 0;
+        padding: 1.075em 0.75em 1.075em 0.75em;
+    }
+}
+
+.edit_icon {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.trash_icon {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.member_table_action {
+    .edit_icon {
+        margin-right: 10px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .trash_icon {
+        color: #fc4b6c;
+        font-size: 18px;
+        cursor: pointer;
+    }
+}
+
+.signup_approval_action {
+    .approval_icon {
+        font-size: 18px;
+        margin-right: 10px;
+        color: #03c9d7;
+        cursor: pointer;
+
+    }
+
+    .reject_icon {
+        font-size: 16px;
+        color: #fc4b6c;
+        cursor: pointer;
+    }
+}
+
+@include mobile {
+    .sign {
+        overflow: hidden;
+        flex-wrap: wrap;
+
+        .member_bg_box {
+            flex: 1 1 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .left_bg {
+            .bg {
+                position: unset;
+                width: 80%;
+                right: auto;
+                top: auto;
+                transform: unset;
+                height: auto;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .form_text_row {
+        max-width: 90%;
+    }
+}
+
+@include tablet {
+    .form_text_row {
+        max-width: 70%;
+    }
+    .sign {
+        overflow: scroll;
+        flex-wrap: wrap;
+
+        .member_bg_box {
+            flex: 1 1 100%;
+            max-width: 100%;
+            height: fit-content;
+        }
+
+        .left_bg {
+            .bg {
+                position: unset;
+                width: 90%;
+                right: auto;
+                top: auto;
+                transform: unset;
+                height: auto;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .form_text_row {
+        max-width: 90%;
+    }
+}
+
+// signIn
+.form_text_row {
+    min-width: 400px;
+}
+
+.signin_title_area {
+    display: flex;
+    flex-flow: column;
+
+    .signin_title {
+        color: var(--nav-text-color);
+        font-weight: 600;
+        margin-bottom: 6px;
+        font-size: 1.5em;
+    }
+
+    .signin_new {
+        color: var(--member-title-sub-color);
+        font-weight: 400;
+        margin-bottom: 16px;
+
+        .new_title {
+            margin-right: 10px;
+        }
+
+        .go_to_signup {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--color-mode-sub-color);
+        }
+    }
+}
+
+.checkbox_and_forgot {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+
+    .go_to_forgot {
+        color: var(--color-mode-sub-color);
+    }
+}
+
+//sign approval
+.signup_approval_no_data {
+    height: 80vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+@include mobile {
+    .form_text_row {
+        min-width: 0px;
+    }
+    .round {
+        .checkbox_label {
+            width: 12px !important;
+            height: 12px !important;
+
+            &:after {
+                width: 7.5px !important;
+                height: 5px !important;
+            }
+        }
+
+        .checkbox_text {
+            margin-left: 18px !important;
+            font-size: 14px;
+        }
+    }
+    .checkbox_and_forgot {
+        .go_to_forgot {
+            font-size: 14px;
+        }
+    }
+}
+
+//signup_complete
+.signup_complete {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #303030;
+
+    svg {
+        color: white;
+        width: 6em;
+        height: auto;
+
+        path:nth-child(2) {
+            color: rgb(134, 255, 134);
+        }
+    }
+
+    .signup_complete_title {
+        margin: {
+            top: 25px;
+            bottom: 25px;
+        }
+        color: white;
+        font-size: 2.2em;
+        letter-spacing: 0.02vw;
+    }
+
+    .complete_text {
+        color: rgb(216, 216, 216);
+        text-align: center;
+        font-size: 1em;
+    }
+
+    .mobal_btn {
+        margin-top: 70px;
+        padding: 1em 8em;
+        font-size: 1.2em;
+    }
+}
+
+.sign_step_wrap {
+    margin-top: 50px;
+    .form {
+        padding-bottom: 1.34375em;
+
+        &.birthdayChange {
+            margin: 0;
+            margin-bottom: 8px;
+        }
+
+        &.fullNameChange {
+            margin: 0;
+        }
+
+        &.input_password {
+            margin: 0;
+            margin-bottom: 8px;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+
+    }
+}
+
+.authentication_wrap {
+    position: relative;
+
+    .authentication_timer {
+        position: absolute;
+        left: 63%;
+        top: 36%;
+        transform: translate(calc(-50% + 0.5px), calc(-50% + 0.5px));
+        color: var(--color-mode-color);
+    }
+}
+
+.user_mypage {
+    width: 32%;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    color: var(--nav-text-color);
+
+    .user_profile_title {
+        width: 100%;
+        font-size: 18px;
+        color: var(--member-title-sub-color);
+    }
+}
+
+.user_info_top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.mypage_user_id_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .mypage_user_id {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 12px;
+        font-size: 24px;
+    }
+
+    .mypage_user_branch {
+        padding: 3px 9px;
+        border-radius: 8px;
+        margin-right: 6px;
+        font-size: 15px;
+        background-color: var(--color-mode-sub2-color);
+    }
+}
+
+.user_info_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 200px;
+    align-items: center;
+
+    .user_info_row {
+        width: 33%;
+        padding: 4px 0;
+
+        .user_info_text {
+            display: block;
+            width: 100%;
+
+            font-size: 18px;
+
+            &.user_info_title {
+                color: var(--member-title-sub-color);
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+.user_info_title {
+
+}
+
+@include mobile {
+    .signup_complete {
+        svg {
+            width: 4em;
+        }
+
+        .signup_complete_title {
+            margin: {
+                top: 15px;
+                bottom: 15px;
+            }
+            font-size: 1.5em;
+        }
+
+        .complete_text {
+            font-size: 0.8em;
+        }
+
+        .mobal_btn {
+            margin-top: 40px;
+            padding: 0.5em 5.5em;
+        }
+    }
+}
