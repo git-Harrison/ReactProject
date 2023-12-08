@@ -18,36 +18,36 @@ import {FiDownload} from "react-icons/fi";
 const reportDailyOption = [
     {
         id: '1',
-        subtitle: 'Daily amount',
+        subtitle: 'Daily Channel',
         navLinks: [
             {
-                to: '/report/daily_amount',
-                label: 'Amount',
+                to: '/report/daily_channel',
+                label: 'Channel',
                 icon: <MdOutlineInventory/>,
             },
         ]
     },
-    // {
-    //     id: '2',
-    //     subtitle: 'FBA/FBM',
-    //     navLinks: [
-    //         {
-    //             to: '/report/daily_seller',
-    //             label: 'FBA/FBM',
-    //             icon: <MdOutlineInventory/>,
-    //         },
-    //     ]
-    // },
+    {
+        id: '2',
+        subtitle: 'Daily Store',
+        navLinks: [
+            {
+                to: '/report/daily_store',
+                label: 'Store',
+                icon: <MdOutlineInventory/>,
+            },
+        ]
+    },
 ]
 
 const reportMonthlyOption = [
     {
         id: '1',
-        subtitle: 'Monthly amount',
+        subtitle: 'Channel',
         navLinks: [
             {
-                to: '/report/monthly_amount',
-                label: 'Amount',
+                to: 'report/monthly_channel',
+                label: 'Channel',
                 icon: <MdOutlineInventory/>,
                 onClick: () => alert('준비중 입니다.'),
             },
@@ -55,6 +55,18 @@ const reportMonthlyOption = [
     },
     {
         id: '2',
+        subtitle: 'Store',
+        navLinks: [
+            {
+                to: 'report/monthly_store',
+                label: 'Store',
+                icon: <MdOutlineInventory/>,
+                onClick: () => alert('준비중 입니다.'),
+            },
+        ]
+    },
+    {
+        id: '3',
         subtitle: 'FBA/FBM',
         navLinks: [
             {

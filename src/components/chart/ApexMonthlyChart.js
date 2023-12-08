@@ -23,7 +23,7 @@ const ApexMonthlyChart = (props) => {
         "#FBFFB9",
         "#EC7357",
         "#8CD790",
-        "#D7FFF1",
+        "#9fc0b4",
         "#41D3BD",
     ]
 

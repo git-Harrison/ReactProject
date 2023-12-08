@@ -1,5 +1,6 @@
 import axios from "axios";
 import {DeCrypt} from "./crypto/CryptoService";
+import store from "../redux/store/ConfigureStore";
 
 // 회원 리스트 가져오기
 export const MemberListRequest = async (userId, status, name, branch, department, position, pagination, page) => {
@@ -91,4 +92,35 @@ export const MemberInfoEdit = async (apiIntention, userId, passWord, selectedBra
     });
 
     return response;
+};
+
+// 지사 옵션 가져오기
+export const fetchMemberListBranchOptions = () => {
+    return axios.get(`${process.env.REACT_APP_OMS_API_URL}/anonymous/branch`, {
+        headers: {
+            'authorization': process.env.REACT_APP_AUTHORIZATION_KEY
+        }
+    }).then(response => response.data.map(data => ({ key: data.code, value: data.code })));
+};
+
+// 본부 옵션 가져오기
+export const fetchMemberListHeadOfficeOptions = (selectedBranch) => {
+    const userInfoBranch = DeCrypt(localStorage.getItem('userInfoBranch'));
+
+    return axios.get(`${process.env.REACT_APP_OMS_API_URL}/anonymous/branch/${userInfoBranch}/departments`, {
+        headers: {
+            'authorization': process.env.REACT_APP_AUTHORIZATION_KEY
+        }
+    }).then(response => response.data.map(data => ({ key: data.department, value: data.department })));
+};
+
+// 직급 옵션 가져오기
+export const fetchMemberListPositionOptions = (selectedBranch) => {
+    const userInfoBranch = DeCrypt(localStorage.getItem('userInfoBranch'));
+
+    return axios.get(`${process.env.REACT_APP_OMS_API_URL}/anonymous/branch/${userInfoBranch}/positions`, {
+        headers: {
+            'authorization': process.env.REACT_APP_AUTHORIZATION_KEY
+        }
+    }).then(response => response.data.map(data => ({ key: data.position, value: data.position })));
 };

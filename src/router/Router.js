@@ -9,9 +9,14 @@ import MainPage from "../page/Main";
 import OrderList from "../page/order/OrderList";
 
 // 리포트 페이지
-import ExcelList from "../page/report/ExcelList";
-// import MonthlyAmount from "../page/report/MonthlyAmount";
+import MonthlyReportChannel from "../page/report/monthly/MonthlyReportChannel";
+import MonthlyReportStore from "../page/report/monthly/MonthlyReportStore";
 import MonthlyAmountSeller from "../page/report/MonthlyAmountSeller";
+import ReportDailyChannel from "../page/report/daily/ReportDailyChannel";
+import ReportDailyStore from "../page/report/daily/ReportDailyStore";
+
+//엑셀 다운로드 페이지
+import ExcelList from "../page/report/ExcelList";
 
 // 맴버(회원) 페이지
 import SignInPage from "../page/member/sign/SignIn";
@@ -29,13 +34,10 @@ import ShopifyExcelUpload from "../hidden/ShopifyExcelUpload";
 import ShopifyExcelSummaryUpload from "../hidden/ShopifyExcelSummaryUpload";
 
 // 임시
-import MonthlyReport from "../page/report/monthly/MonthlyReport";
-import DailyReport from "../page/report/daily/DailyReport";
 import AdminNotice from "../page/admin/AdminNotice";
 
 // 테스트 페이지
 import TestPage from "../hidden/TestPage";
-
 
 function Router() {
     return (
@@ -60,12 +62,12 @@ function Router() {
                 <Route path="order_list/:status" element={<OrderList/>}/>
 
                 {/* 월별 리포트 페이지 */}
-                {/*<Route path="report/monthly_amount" element={<MonthlyAmount/>}/>*/}
-                <Route path="report/monthly_amount" element={<MonthlyReport/>}/>
-
+                <Route path="report/monthly_channel" element={<MonthlyReportChannel/>}/>
+                <Route path="report/monthly_store" element={<MonthlyReportStore/>}/>
 
                 {/* 일별 리포트 페이지 */}
-                <Route path="report/daily_amount" element={<DailyReport/>}/>
+                <Route path="report/daily_channel" element={<ReportDailyChannel/>}/>
+                <Route path="report/daily_store" element={<ReportDailyStore/>}/>
 
                 {/* 판매자 별 월별 리포트 페이지 */}
                 <Route path="report/monthly_seller" element={<MonthlyAmountSeller/>}/>
@@ -91,7 +93,6 @@ function Router() {
 
                 {/* 테스트 페이지 */}
                 <Route path="test" element={<TestPage/>}/>
-                <Route path="monthlyTest" element={<MonthlyReport/>}/>
                 <Route path="/admin/notice" element={<AdminNotice/>}/>
             </Route>
         </Routes>

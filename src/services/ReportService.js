@@ -17,11 +17,7 @@ export const OrderThisMonth = async () => {
         }
     });
 
-    const responseAmount = response.data.result.this_month_total.amount;
-    const responseCurrency = response.data.result.this_month_total.currency;
-    const responseData = `${formatNumber(responseAmount)} ${responseCurrency}`;
-
-    return responseData;
+    return response.data.result;
 };
 
 export const MainBrandCount = async () => {

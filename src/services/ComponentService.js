@@ -8,7 +8,7 @@ export const Channels = async () => {
     const state = store.getState();
     const currentBranch = state.themeBranch.currentBranch;
 
-    const response = await axios.get(`${process.env.REACT_APP_REPORT_DASHBOARD_API_URL}/channel?branch=${currentBranch}`, {
+    const response = await axios.get(`${process.env.REACT_APP_REPORT_DASHBOARD_API_URL}/account/channel?branch=${currentBranch}`, {
         headers: {
             'Oms-id': userInfoId,
             'authorization': userInfoToken
@@ -17,13 +17,13 @@ export const Channels = async () => {
     return response.data.result;
 }
 
-export const Stores = async (currentChannel) => {
+export const TotalStores = async () => {
     const userInfoId = DeCrypt(localStorage.getItem('userInfoId'));
     const userInfoToken = DeCrypt(localStorage.getItem('access_token'));
     const state = store.getState();
     const currentBranch = state.themeBranch.currentBranch;
 
-    const response = await axios.get(`${process.env.REACT_APP_REPORT_DASHBOARD_API_URL}/brand?channel=${currentChannel}&branch=${currentBranch}`, {
+    const response = await axios.get(`${process.env.REACT_APP_REPORT_DASHBOARD_API_URL}/account/brand?&branch=${currentBranch}`, {
         headers: {
             'Oms-id': userInfoId,
             'authorization': userInfoToken
@@ -33,25 +33,27 @@ export const Stores = async (currentChannel) => {
     return response.data.result;
 };
 
-export const Brands = async (apiUrl) => {
+export const Brands = async (channel) => {
     const userInfoId = DeCrypt(localStorage.getItem('userInfoId'));
     const userInfoToken = DeCrypt(localStorage.getItem('access_token'));
+    const state = store.getState();
+    const currentBranch = state.themeBranch.currentBranch;
 
-    const response = await axios.get(`${apiUrl}/brands`, {
+    const response = await axios.get(`${process.env.REACT_APP_REPORT_DASHBOARD_API_URL}/brand?channel=${channel}&branch=${currentBranch}`, {
         headers: {
             'Oms-id': userInfoId,
             'authorization': userInfoToken
         }
     });
 
-    return response.data;
+    return response.data.result;
 };
 
 export const Branch = async () => {
     const userInfoId = DeCrypt(localStorage.getItem('userInfoId'));
     const userInfoToken = DeCrypt(localStorage.getItem('access_token'));
 
-    const response = await axios.get(`${process.env.REACT_APP_REPORT_DASHBOARD_API_URL}/branch`, {
+    const response = await axios.get(`${process.env.REACT_APP_REPORT_DASHBOARD_API_URL}/account/branch`, {
         headers: {
             'Oms-id': userInfoId,
             'authorization': userInfoToken

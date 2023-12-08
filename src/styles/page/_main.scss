@@ -24,6 +24,9 @@
             }
 
             .main_total_sales_data {
+                display: flex;
+                align-items: center;
+                justify-content: start;
                 color: var(--nav-text-color);
                 font-size: 24px;
                 font-weight: 500;

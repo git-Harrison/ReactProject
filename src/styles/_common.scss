@@ -372,6 +372,42 @@
             margin-top: 8px;
         }
     }
+}
+
+.ratioTriangle {
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+
+.triangleUp {
+    color: #fc4b6c;
+    transform: rotate(0deg);
+    font-size: 12px;
+}
+
+.triangleDown {
+    color: #0093ff;
+    transform: rotate(180deg);
+    font-size: 12px;
+}
+
+.ratioTextUp {
+    color: #fc4b6c;
+    margin-left: -4px;
+    font-size: 14px;
+}
+
+.ratioTextDown {
+    color: #0093ff;
+    margin-left: -4px;
+    font-size: 14px;
+}
+
+.ratio_triangle {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 10px;
 
 }
 

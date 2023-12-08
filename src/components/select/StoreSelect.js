@@ -4,17 +4,17 @@ import Select from "../../components/select/BasicSelect";
 import {Brands} from "../../services/ComponentService";
 
 function StoreSelect(props) {
-    const {onSelectChange, pageMode, apiUrl, initialSelect} = props;
+    const {onSelectChange, pageMode, selectedChannel} = props;
     const [store, setstore] = useState([]); // 브랜드 데이터를 저장할 상태 변수
 
     const fetchBrands = async () => {
         try {
-            const responseData = await Brands(apiUrl);
-
-            const processedData = responseData.map(item => ({
-                key: item.brand_name,
-                value: item.merchant_token,
+            const responseData = await Brands(selectedChannel);
+            const processedData = responseData.map(brandName => ({
+                key: brandName,
+                value: brandName,
             }));
+
             if (pageMode === "excel") {
                 processedData.unshift({
                     key: "Summary",
@@ -26,7 +26,7 @@ function StoreSelect(props) {
                 key: "Store Total",
                 value: "all",
             });
-            if (pageMode !== "excel" && pageMode !== "orderList" && pageMode !== "monthlySeller" && pageMode !== "dailySeller") {
+            if (pageMode !== "excel" && pageMode !== "monthlySeller") {
                 processedData.unshift({
                     key: "Channel Total",
                     value: "null",
@@ -40,7 +40,7 @@ function StoreSelect(props) {
 
     useEffect(() => {
         fetchBrands();
-    }, [apiUrl]);
+    }, [selectedChannel]);
 
     const handleStoreChange = (selectedId, selectedValue) => {
         onSelectChange(selectedId, selectedValue); // 브랜드 선택이 변경되었을 때 선택된 값 전달

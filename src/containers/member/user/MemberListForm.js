@@ -1,7 +1,11 @@
 import MemberListTable from "../../../components/table/MemberListTable";
 import React, {useEffect, useState} from "react";
 import NoDataMsg from "../../../components/NoDataMsg";
-import {MemberListRequest} from "../../../services/MemberService";
+import {
+    fetchMemberListBranchOptions,
+    fetchMemberListHeadOfficeOptions, fetchMemberListPositionOptions,
+    MemberListRequest
+} from "../../../services/MemberService";
 import Select from "../../../components/select/BasicSelect";
 import Button from "../../../components/button/Button";
 import FormSearchInput from "../../../components/input/FormSearchInput";
@@ -16,20 +20,9 @@ export const MemberListForm = () => {
     const [search, setSearch] = useState("");
     const [searchLabel, setSearchLabel] = useState("");
     const [searchPlaceholder, setSearchPlaceholder] = useState("");
-
-    const fetchData = async (page = 1) => {
-        try {
-            const responseData = await MemberListRequest(null, 1, null, null, null, null, 20, page);
-            setData(responseData.data);
-            setLastPage(responseData.last_page);
-        } catch (error) {
-            console.error('Failed to fetch data:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    const [branchOptions, setBranchOptions] = useState([]);
+    const [departmentOptions, setDepartmentOptions] = useState([]);
+    const [positionOptions, setPositionOptions] = useState([]);
 
     const option = [
         { key: 'ALL', value: 'all' },
@@ -49,44 +42,34 @@ export const MemberListForm = () => {
         }
     }, [memberSearchFilter]);
 
-    const updateAdditionalOptions = (filter) => {
-        const optionsMapping = {
-            branch: [
-                { key: 'KR', value: 'KR' },
-                { key: 'US', value: 'US' },
-            ],
-            department: [
-                {key: "경영지원 본부", value: "경영지원 본부"},
-                {key: "신사업 본부", value: "신사업 본부"},
-                {key: "마케팅 본부", value: "마케팅 본부"},
-                {key: "BM 본부", value: "BM 본부"},
-                {key: "PA 사업 본부", value: "PA 사업 본부"},
-                {key: "데이터 본부", value: "데이터 본부"},
-                {key: "CA 사업 본부", value: "CA 사업 본부"},
-                {key: "National Retail 본부", value: "National Retail 본부"},
-                {key: "IT 사업 본부", value: "IT 사업 본부"},
-                {key: "물류 사업 본부", value: "물류 사업 본부"},
-                {key: "글로벌 매니지먼트 본부", value: "글로벌 매니지먼트 본부"},
-            ],
-            position: [
-                {key: "대표", value: "대표"},
-                {key: "부대표", value: "부대표"},
-                {key: "이사", value: "이사"},
-                {key: "부장", value: "부장"},
-                {key: "차장", value: "차장"},
-                {key: "과장", value: "과장"},
-                {key: "대리", value: "대리"},
-                {key: "사원", value: "사원"},
-                {key: "인턴", value: "인턴"}
-            ],
-            default: [],
+    useEffect(() => {
+        const loadOptions = async () => {
+            setBranchOptions(await fetchMemberListBranchOptions());
+            setDepartmentOptions(await fetchMemberListHeadOfficeOptions());
+            setPositionOptions(await fetchMemberListPositionOptions());
         };
-        setOption2(optionsMapping[filter] || []);
+        loadOptions();
+    }, []);
+
+    const updateAdditionalOptions = (filter) => {
+        switch (filter) {
+            case 'branch':
+                setOption2(branchOptions.map(option => ({ key: option.key, value: option.value })));
+                break;
+            case 'department':
+                setOption2(departmentOptions.map(option => ({ key: option.key, value: option.value })));
+                break;
+            case 'position':
+                setOption2(positionOptions.map(option => ({ key: option.key, value: option.value })));
+                break;
+            default:
+                setOption2([]);
+                break;
+        }
     };
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
-        fetchData(newPage);
     };
 
     const shouldRenderTextInput = () => ['userId', 'name'].includes(memberSearchFilter);
@@ -128,27 +111,15 @@ export const MemberListForm = () => {
     };
 
     const handleSelectChange = async (key, value) => {
-        setAdditionalFilter("");
         setMemberSearchFilter(value);
-        updateAdditionalOptions(value);
-        setSearch("");
-        if (value === 'all') {
-            fetchData(1);
-        } else {
-            handleMemberSearch(value, additionalFilter);
-        }
+        setAdditionalFilter('');
+        handleMemberSearch();
     };
 
     const handleAdditionalFilterChange = (key, value) => {
         setAdditionalFilter(value);
         handleMemberSearch(memberSearchFilter, value);
     };
-
-    useEffect(() => {
-        if (additionalFilter) {
-            handleMemberSearch(memberSearchFilter, additionalFilter);
-        }
-    }, [additionalFilter, memberSearchFilter]);
 
     const handleSearch = (event) => {
         setSearch(event.target.value);
@@ -163,6 +134,10 @@ export const MemberListForm = () => {
             handleSearchFilterChange();
         }
     };
+
+    useEffect(() => {
+        handleMemberSearch();
+    }, []);
 
     useEffect(() => {
         switch (memberSearchFilter) {
@@ -181,7 +156,7 @@ export const MemberListForm = () => {
         }
         setSearch('');
     }, [memberSearchFilter]);
-    
+
     return (
         <>
             <div className="top_nav">

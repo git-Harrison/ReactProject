@@ -1,32 +1,36 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import OrderReport from "../../containers/report/OrderReport";
 import useSelectedState from "../../hooks/SelectState";
 import StoreSelect from "../../components/select/StoreSelect";
 import DownloadButton from "../../components/button/ExcelDownBtn";
 import ContentsGuide from "../../components/ContentsGuide";
 import {MessageContext} from "../../contexts/MessageContext";
+import UserSelectCondition from "../../containers/report/UserSelectCondition";
+import BasicTable from "../../components/table/BasicTable";
+import {useSelector} from "react-redux";
 
 export const ExcelList = () => {
-    const { setExplanation } = useContext(MessageContext);
+    const {setExplanation} = useContext(MessageContext);
     const selectedState = useSelectedState(); // 선택된 상태 관리
+    const [loading, setLoading] = useState(false);
 
     const columns = React.useMemo(
         () => [
-            { Header: 'Store', accessor: 'brand_name' },
-            { Header: 'Type', accessor: 'type' },
-            ...(selectedState.selectedChannel !== "Shopify" ? [{ Header: 'Timezone', accessor: 'timezone' }] : []),
-            { Header: 'Month', accessor: 'month' },
+            {Header: 'Store', accessor: 'brand_name'},
+            {Header: 'Type', accessor: 'type'},
+            ...(selectedState.selectedChannel !== "Shopify" ? [{Header: 'Timezone', accessor: 'timezone'}] : []),
+            {Header: 'Month', accessor: 'month'},
             {
                 Header: 'Status',
                 accessor: 'status',
-                Cell: ({ cell }) => {
+                Cell: ({cell}) => {
                     const filePath = cell.row.original.file_path;
                     if (filePath === 'failed') {
                         return 'failed';
                     } else if (filePath === null) {
                         return 'In progress';
                     } else {
-                        return <DownloadButton url={filePath} />;
+                        return <DownloadButton url={filePath}/>;
                     }
                 },
             },
@@ -120,20 +124,20 @@ export const ExcelList = () => {
         store: defaultStore
     };
 
+    const pageMode = "excel";
+    let reportData = useSelector(state => state.report.data);
+
+    if (!Array.isArray(reportData)) {
+        console.error('reportData is not an array:', reportData);
+        reportData = [];
+    }
+
     return (
         <>
-            <OrderReport
-                pageMode="excel"
-                columns={columns}
-                initialApiURL={initialApiURL}
-                channelOptions={channels}
-                storeSelect={<StoreSelect pageMode="excel" onSelectChange={selectedState.handleStoreChange} initialSelect={initialSelect} apiUrl={selectedState.apiUrl}/>}
-                timeZoneOptions={timezone}
-                typeOptions={type}
-                monthOptions={monthOptions}
-                selectedState={selectedState}
-                initialSelect={initialSelect}
-            />
+            <UserSelectCondition pageMode={pageMode} loading={loading} setLoading={setLoading}/>
+            {reportData.length !== 0 ? (
+                <BasicTable columns={columns} data={reportData}/>
+            ) : null}
             <ContentsGuide pageMode="excel" guideTitle={guideTitle} contentsGuideTitle={contentsGuideTitle}
                            contentsExplanation={contentsExplanation}/>
         </>
